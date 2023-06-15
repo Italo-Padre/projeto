@@ -1,13 +1,13 @@
 const clienteValidator = {
     nome: {
         required:'O campo é obrigatório',
-    min:{
+    minLength:{
       value: 4,
-      message: 'O mínimo é  1'
+      message: ' O mínimo é 4 caracteres'
     },
-    max:{
+    maxLength:{
       value: 50,
-      message: 'O máximo é  50'
+      message: ' O máximo é 50 caracteres'
     },
     
     },
@@ -15,63 +15,55 @@ const clienteValidator = {
       required:'O campo é obrigatório',
   minLength:{
     value: 4,
-    message: ' O mínimo 4 caracteres'
+    message: ' O mínimo é 4 caracteres'
   },
         },
-        senha:{
-            required:'O campo é obrigatório',
-            minh:{
-                value: 1,
-                message: 'O mínimo é 1 '
-              },
-            
-            },
            rua:{
                 required:'O campo é obrigatório',
-                min:{
+                minLength:{
                     value: 1,
-                    message: 'O mínimo  é 1 '
+                    message: 'O mínimo é 1 caracteres '
                   },
-                  max:{
-                    value: 2000,
-                    message: 'O máximo é 2000 '
+                  maxLength:{
+                    value: 20,
+                    message: 'O máximo é 20 caracteres '
                   },
                   
                 
                 },
                 cidade:{
                     required:'O campo é obrigatório',
-                    min:{
-                        value: 1,
-                        message: 'O mínimo  é 1 '
+                    minLength:{
+                        value: 3,
+                        message: 'O mínimo  é 3 caracteres '
                       },
                       max:{
-                        value: 2000,
-                        message: 'O máximo é 2000 '
+                        value: 15,
+                        message: 'O máximo é 15 caracteres '
                       },
                       
                     
                     },
                    bairro:{
                         required:'O campo é obrigatório',
-                        min:{
-                            value: 1,
-                            message: 'O mínimo  é 1 '
+                        minLength:{
+                            value: 2,
+                            message: 'O mínimo  é 2 caracteteres '
                           },
                           max:{
-                            value: 2000,
-                            message: 'O máximo é 2000 '
+                            value: 20,
+                            message: 'O máximo é 20 caracteres '
                           },
                           
                         
                         },
                         cep:{
                             required:'O campo é obrigatório',
-                            min:{
+                            minLength:{
                                 value: 1,
                                 message: 'O mínimo  é 1 '
                               },
-                              max:{
+                              maxLength:{
                                 value: 2000,
                                 message: 'O máximo é 2000 '
                               },

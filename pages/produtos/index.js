@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
   const [produtos, setProdutos] = useState([])
@@ -19,14 +20,14 @@ const index = () => {
     if(confirm('Deseja realmente excluir ?')){
       const produtos = getAll()
       produtos.splice(id,1)
-      window.localStorage.setItem('usuarios', JSON.stringify(produtos))
+      window.localStorage.setItem('produtos', JSON.stringify(produtos))
       setProdutos(produtos)
     }
   }
   return (
     <>
         <Pagina titulo='Produtos'>
-        <Link href={'/produtos/form'} className='btn btn-primary mb-2' >Novo</Link>
+        <Link href={'/produtos/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>

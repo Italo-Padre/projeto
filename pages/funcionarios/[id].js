@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
-import produtoValidator from '@/validators/produtoValidator'
+import funcionarioValidator from '@/validators/produtoValidator'
 
 const form = () => {
   const {push, query} = useRouter()
@@ -33,7 +33,7 @@ const form = () => {
    
         <Form>
           <Form.Group className="mb-3" controlId="produto">
-            <Form.Label>Produto:</Form.Label>
+            <Form.Label>Fun:</Form.Label>
             <Form.Control isInvalid={errors.produto} {...register('produto',produtoValidator.produto)} type="text" />
             {
               errors.produto &&

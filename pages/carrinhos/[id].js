@@ -6,12 +6,12 @@ import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+import carrinhoValidator from '@/validators/carrinhoValidator'
 
 const form = () => {
   const [produtos, setProdutos] = useState([])
-  const [carrinhos, setCarrinhos] = useState([])
   const {push, query} = useRouter()
-  const {register, handleSubmit, setValue} = useForm ()
+  const {register, handleSubmit, setValue,formState:{errors}} = useForm ()
   useEffect(() => {
     setProdutos(getAll)
   },[])
@@ -38,25 +38,43 @@ const form = () => {
   return (
     <>
       <Pagina titulo='Carrinho'>
-        <Form>
-          <Form.Group className="mb-3" controlId="sessao">
-            <Form.Label>Sessão:</Form.Label>
-            <Form.Control {...register('sessao')} type="text" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="produto">
-            <Form.Label>Produto:</Form.Label>
-            <Form.Control {...register('produto')} type="text" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="quantidade">
-            <Form.Label>Quantidade:</Form.Label>
-            <Form.Control {...register('quantidade')}  type="text" />
-           
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="preco">
-            <Form.Label>Preço:</Form.Label>
-            <Form.Control {...register('preco')}  type="text" />
-           
-          </Form.Group>
+      <Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Sessão</Form.Label>
+          <Form.Control isInvalid={true} {...register('sessao',carrinhoValidator.sessao)} id="sessa"  />
+          {
+          errors.sessao &&
+          <small>{errors.sessao.message}</small>
+        }
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label >Produto:</Form.Label>
+          <Form.Select  isInvalid={true}  {...register('produto',carrinhoValidator.produto)} id="produto">
+            {produtos.map(item=>(
+                <option>{item.produto}</option>
+            ))}
+              {
+          errors.produto &&
+          <small>{errors.produto.message}</small>
+        }
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Quantidade:</Form.Label>
+          <Form.Control isInvalid={true} {...register('quantidade',carrinhoValidator.quantidade)} id="quantidade"  />
+          {
+          errors.quantidade &&
+          <small>{errors.quantidade.message}</small>
+        }
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Preço</Form.Label>
+          <Form.Control isInvalid={true} {...register('preco',carrinhoValidator.preco)} id="preco"  />
+          {
+          errors.preco &&
+          <small>{errors.preco.message}</small>
+        }
+        </Form.Group>
           <div className='text-center'>
 
           <Button variant="success" onClick={handleSubmit(salvar)}>

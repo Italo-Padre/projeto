@@ -1,4 +1,4 @@
-const pedidoValidator = {
+const estoqueValidator = {
     produto: {
       required:'O campo é obrigatório',
   minLength:{
@@ -36,4 +36,4 @@ const pedidoValidator = {
                     },
     }
 
-export default pedidoValidator
+export default estoqueValidator

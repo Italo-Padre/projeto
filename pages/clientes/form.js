@@ -6,17 +6,24 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 import clienteValidator from '@/validators/clienteValidator'
+import { mask } from 'remask'
 
 const form = () => {
   const {push} = useRouter()
-  const {register, handleSubmit, formState:{errors}} = useForm ()
+  const {register, handleSubmit,setValue, formState:{errors}} = useForm ()
   function salvar(dados){
     const clientes = JSON.parse(window.localStorage.getItem('clientes')) || []
     clientes.push(dados)
     window.localStorage.setItem('clientes', JSON.stringify(clientes))
     push('/clientes')
   }
+  function handleChange (event) {
+    const name = event.target.name
+    const value = event.target.value
+    const mascara = event.target.getAttribute('mask')
 
+    setValue(name , mask(value,mascara))
+  }
   return (
     <>
       <Pagina titulo='Clientes'>
@@ -35,14 +42,6 @@ const form = () => {
             {
               errors.email &&
               <small>{errors.email.message}</small>
-            }
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="senha">
-            <Form.Label>Senha:</Form.Label>
-            <Form.Control isInvalid={errors.senha} {...register('senha',clienteValidator.senha)} type="text" />
-            {
-              errors.senha &&
-              <small>{errors.senha.message}</small>
             }
           </Form.Group>
           <Form.Group className="mb-3" controlId="rua">
@@ -73,7 +72,9 @@ const form = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="cep">
             <Form.Label>Cep:</Form.Label>
-            <Form.Control isInvalid={errors.cep} {...register('cep',clienteValidator.cep)}  type="text" />
+            <Form.Control isInvalid={errors.cep} mask="99999-999"
+            {...register('cep',clienteValidator.cep)}  type="text"
+            onChange={handleChange }/>
               {
               errors.cep &&
               <small>{errors.cep.message}</small>

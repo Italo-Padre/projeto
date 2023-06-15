@@ -8,13 +8,14 @@ import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 import carrinhoValidator from '@/validators/carrinhoValidator'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { mask } from 'remask'
 
 
 const form = () => {
   const [produtos, setProdutos] = useState([])
 
   const {push} = useRouter()
-  const {register, handleSubmit, formState:{errors}} = useForm ()
+  const {register, handleSubmit,setValue, formState:{errors}} = useForm ()
   
   useEffect(() => {
     setProdutos(getAll)
@@ -30,6 +31,13 @@ const form = () => {
     carrinhos.push(dados)
     window.localStorage.setItem('carrinhos', JSON.stringify(carrinhos))
     push('/carrinhos')
+  }
+  function handleChange (event) {
+    const name = event.target.name
+    const value = event.target.value
+    const mascara = event.target.getAttribute('mask')
+
+    setValue(name , mask(value,mascara))
   }
 
   return (
@@ -67,7 +75,10 @@ const form = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Preço</Form.Label>
-          <Form.Control isInvalid={true} {...register('preco',carrinhoValidator.preco)} id="preco"  />
+          <Form.Control isInvalid={true} mask="R$"
+          
+           {...register('preco',carrinhoValidator.preco)} id="preco" 
+           onChange={handleChange} />
           {
           errors.preco &&
           <small>{errors.preco.message}</small>

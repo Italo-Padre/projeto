@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
   const [pedidos, setPedidos] = useState([])
@@ -20,13 +21,13 @@ const index = () => {
       const pedidos = getAll()
       pedidos.splice(id,1)
       window.localStorage.setItem('pedidos', JSON.stringify(pedidos))
-      setProdutos(pedidos)
+      setPedidos(pedidos)
     }
   }
   return (
     <>
         <Pagina titulo='pedidos'>
-        <Link href={'/pedidos/form'} className='btn btn-primary mb-2' >Novo</Link>
+        <Link href={'/pedidos/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>

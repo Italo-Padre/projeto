@@ -9,24 +9,25 @@ import produtoValidator from '@/validators/produtoValidator'
 
 const form = () => {
   const {push, query} = useRouter()
-  const {register, handleSubmit,formState:{errors}, setValue} = useForm ()
+  const {register, handleSubmit, setValue,formState:{errors}} = useForm ()
 
   useEffect(()=> {
     if(query.id){
       const produtos = JSON.parse(window.localStorage.getItem('produtos'))
       const produto = produtos[query.id]
       for(let atributo in produto){
-        setValue(atributo,produtos[atributo])
+        setValue(atributo,produto[atributo])
       }
     }
   }, [query.id])
 
   function salvar(dados){
     const produtos = JSON.parse(window.localStorage.getItem('produtos')) || []
-    cursos.splice(query.id, 1, dados)
+    produtos.splice(query.id, 1, dados)
     window.localStorage.setItem('produtos', JSON.stringify(produtos))
     push('/produtos')
   }
+
   return (
     <>
       <Pagina titulo='Produtos'>

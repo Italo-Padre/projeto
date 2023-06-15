@@ -32,10 +32,6 @@ const carrinhoValidator = {
                     value: 1,
                     message: 'O mínimo  é 1 '
                   },
-                  max:{
-                    value: 2000,
-                    message: 'O máximo é 2000 '
-                  },
                 
                 },
     }

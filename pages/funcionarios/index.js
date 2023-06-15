@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
-
+import {GrNewWindow} from 'react-icons/gr'
 const index = () => {
   const [funcionarios , setFuncionarios] = useState([])
 
@@ -26,16 +26,16 @@ const index = () => {
   return (
     <>
         <Pagina titulo='Funcionários'>
-        <Link href={'/produtos/form'} className='btn btn-primary mb-2' >Novo</Link>
+        <Link href={'/funcionarios/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>#</th>
-          <th>Produto</th>
-          <th>Preco</th>
-          <th>Quantidade</th>
-          <th>Descrição</th>
-          <th>Foto</th>
+          <th>Funcionários</th>
+          <th>CPF</th>
+          <th>CEP</th>
+          <th>Telefone</th>
+
           
        
         </tr>
@@ -48,11 +48,11 @@ const index = () => {
             
             <AiOutlineDelete onClick={()=>excluir(i)}/>
             </td>
-          <td>{item.produto}</td>
-          <td>{item.preco}</td>
-          <td>{item.quantidade}</td>
-          <td>{item.descricao}</td>
-          <td>{item.foto}</td>
+          <td>{item.funcionario}</td>
+          <td>{item.cpf}</td>
+          <td>{item.cep}</td>
+          <td>{item.telefone}</td>
+          
           
          
         </tr>

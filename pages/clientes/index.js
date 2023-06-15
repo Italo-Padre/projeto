@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
   const [clientes, setClientes] = useState([])
@@ -26,14 +27,13 @@ const index = () => {
   return (
     <>
         <Pagina titulo='Clientes'>
-        <Link href={'/clientes/form'} className='btn btn-primary mb-2' >Novo</Link>
+        <Link href={'/clientes/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>#</th>
           <th>Nome</th>
           <th>Email</th>
-          <th>Senha</th>
           <th>Rua</th>
           <th>Cidade</th>
           <th>Bairro</th>
@@ -52,7 +52,6 @@ const index = () => {
             </td>
           <td>{item.nome}</td>
           <td>{item.email}</td>
-          <td>{item.senha}</td>
           <td>{item.rua}</td>
           <td>{item.cidade}</td>
           <td>{item.bairro}</td>
