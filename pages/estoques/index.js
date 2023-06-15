@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
   const [estoques, setEstoques] = useState([])
@@ -26,7 +27,7 @@ const index = () => {
   return (
     <>
         <Pagina titulo='Estoque'>
-        <Link href={'/produtos/form'} className='btn btn-primary mb-2' >Novo</Link>
+        <Link href={'/estoques/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>
