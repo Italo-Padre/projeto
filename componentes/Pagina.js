@@ -38,17 +38,21 @@ const Pagina = (props) => {
      </Nav>
         </Offcanvas.Body>
       </Offcanvas>
-   
       <Navbar bg="dark">
+
+        
           <Navbar.Brand href="#home">
+            
         <Button variant="danger" onClick={handleShow}>
         <BsBorderWidth></BsBorderWidth>
       </Button>
           </Navbar.Brand>
       </Navbar>
-      <Container>
+      <h1 className='bg-dark py-3 text-white mb-0 text-center'>{props.titulo}</h1>
+    <Container>
         {props.children}
       </Container>
+    
     </div>
   )
 }
