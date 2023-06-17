@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+import {AiFillSave } from 'react-icons/ai'
+import {ImExit} from 'react-icons/im'
 import produtoValidator from '@/validators/produtoValidator'
 
 const form = () => {
@@ -69,10 +70,10 @@ const form = () => {
            
           </Form.Group>
           <div className='text-center'>
-          <Button variant="success" onClick={handleSubmit(salvar)}>
-         < AiOutlineCheck className='me-1'/> Salvar
+          <Button variant="info" onClick={handleSubmit(salvar)}>
+         < AiFillSave className='me-1'/> Salvar
           </Button>
-          <Link href={'/produtos'} className='ms-2 btn btn-danger' ><AiOutlineArrowLeft className='me-1'/>Voltar</Link>
+          <Link href={'/produtos'} className='ms-2 btn btn-danger' ><ImExit className='me-1'/>Voltar</Link>
           </div>
         </Form>
       </Pagina>

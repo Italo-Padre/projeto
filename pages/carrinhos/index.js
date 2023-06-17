@@ -2,7 +2,8 @@ import Pagina from '@/componentes/Pagina'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import { FiDelete} from 'react-icons/fi'
+import {BiEdit} from 'react-icons/bi'
 import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
@@ -26,8 +27,8 @@ const index = () => {
   }
   return (
     <>
-        <Pagina titulo='Carrinhos'>
-        <Link href={'/carrinhos/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
+        <Pagina titulo='Carrinho'>
+        <Link href={'/carrinhos/form'} className='btn btn-info mb-2 ' ><GrNewWindow></GrNewWindow>Formulário</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -42,10 +43,10 @@ const index = () => {
       <tbody> 
         {carrinhos.map((item, i) =>(
           <tr key={i}>
-          <td >
-            <Link href={'/carrinhos/'+i}><AiFillEdit className='me-2' /></Link>
+          <td >                            
+            <Link href={'/carrinhos/'+i}><BiEdit className='me-2 text-info'  /></Link>
             
-            <AiOutlineDelete onClick={()=>excluir(i)}/>
+            <FiDelete onClick={()=>excluir(i)}/>
             </td>
           <td>{item.sessao}</td>
           <td>{item.produto}</td>

@@ -72,13 +72,13 @@ const clienteValidator = {
                             },
                            estado:{
                                 required:'O campo é obrigatório',
-                                min:{
+                                minLength:{
                                     value: 1,
-                                    message: 'O mínimo  é 1 '
+                                    message: 'O mínimo de caracteres  é 1 '
                                   },
-                                  max:{
+                                  maxLength:{
                                     value: 2000,
-                                    message: 'O máximo é 2000 '
+                                    message: 'O máximo de caracteres é 2000 '
                                   },
                                   
                                 },

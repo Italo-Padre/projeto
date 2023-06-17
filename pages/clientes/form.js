@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+import {AiFillSave } from 'react-icons/ai'
+import {ImExit} from 'react-icons/im'
 import clienteValidator from '@/validators/clienteValidator'
 import { mask } from 'remask'
 
@@ -71,7 +72,7 @@ const form = () => {
            
           </Form.Group>
           <Form.Group className="mb-3" controlId="cep">
-            <Form.Label>Cep:</Form.Label>
+            <Form.Label>CEP:</Form.Label>
             <Form.Control isInvalid={errors.cep} mask="99999-999"
             {...register('cep',clienteValidator.cep)}  type="text"
             onChange={handleChange }/>
@@ -90,16 +91,16 @@ const form = () => {
             }
            
           </Form.Group>
+          
           <div className='text-center'>
-          <Button variant="success" onClick={handleSubmit(salvar)}>
-         < AiOutlineCheck className='me-1'/> Salvar
+          <Button variant="info" onClick={handleSubmit(salvar)}>
+         <AiFillSave className='me-1'/> Salvar
           </Button>
-          <Link href={'/clientes'} className='ms-2 btn btn-danger' ><AiOutlineArrowLeft className='me-1'/>Voltar</Link>
+          <Link href={'/clientes'} className='ms-2 btn btn-danger' ><ImExit className='me-1'/>Voltar</Link>
           </div>
         </Form>
       </Pagina>
     </>
   )
 }
-
 export default form

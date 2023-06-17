@@ -2,7 +2,8 @@ import Pagina from '@/componentes/Pagina'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
+import { FiDelete} from 'react-icons/fi'
+import {BiEdit} from 'react-icons/bi'
 import {GrNewWindow} from 'react-icons/gr'
 
 const index = () => {
@@ -27,7 +28,7 @@ const index = () => {
   return (
     <>
         <Pagina titulo='Clientes'>
-        <Link href={'/clientes/form'} className='btn btn-danger mb-2' ><GrNewWindow></GrNewWindow>Novo</Link>
+        <Link href={'/clientes/form'} className='btn btn-info mb-2' ><GrNewWindow></GrNewWindow>Formulário</Link>
         <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -37,7 +38,7 @@ const index = () => {
           <th>Rua</th>
           <th>Cidade</th>
           <th>Bairro</th>
-          <th>Cep</th>
+          <th>CEP</th>
           <th>Estado</th>
        
         </tr>
@@ -46,9 +47,9 @@ const index = () => {
         {clientes.map((item, i) =>(
           <tr key={i}>
           <td >
-            <Link href={'/clientes/'+i}><AiFillEdit className='me-2' /></Link>
+            <Link href={'/clientes/'+i}><BiEdit className='me-2 text-info' /></Link>
             
-            <AiOutlineDelete onClick={()=>excluir(i)}/>
+            <FiDelete  onClick={()=>excluir(i)}/>
             </td>
           <td>{item.nome}</td>
           <td>{item.email}</td>

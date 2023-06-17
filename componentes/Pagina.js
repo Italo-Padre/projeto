@@ -12,7 +12,7 @@ const Pagina = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSelect = (eventKey) => alert(`tem certeza que quer ir para ${eventKey}`);
+ 
 
 
   return (
@@ -22,33 +22,33 @@ const Pagina = (props) => {
         
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
+        <Nav variant="pills" activeKey="1" >
         <Nav defaultActiveKey="/" className="flex-column">
 
 
-      <Nav.Link href="/index"><Button variant="danger" size="lg">Início<AiFillHome></AiFillHome></Button></Nav.Link>
-      <Nav.Link href="/clientes"><Button variant="danger" size="lg">Clientes<FiUsers></FiUsers></Button></Nav.Link>
-      <Nav.Link href="/estoques"><Button variant="danger" size="lg">Estoque<AiOutlineDropbox></AiOutlineDropbox></Button></Nav.Link>
-      <Nav.Link href="/pedidos"><Button variant="danger" size="lg">Pedidos<BsFillBoxSeamFill></BsFillBoxSeamFill></Button></Nav.Link>
-      <Nav.Link href="/produtos"><Button variant="danger" size="lg">Produtos<MdProductionQuantityLimits></MdProductionQuantityLimits></Button></Nav.Link>
-      <Nav.Link href="/carrinhos"><Button variant="danger" size="lg">Carrinhos<BsFillCartCheckFill></BsFillCartCheckFill></Button></Nav.Link>
-      <Nav.Link href="/funcionarios"><Button variant="danger" size="lg">Funcionários<FaUserTie></FaUserTie></Button></Nav.Link>
+      <Nav.Link href="/inicio"><Button variant="info" size="lg">Início<AiFillHome></AiFillHome></Button></Nav.Link>
+      <Nav.Link href="/clientes"><Button variant="info" size="lg">Clientes<FiUsers></FiUsers></Button></Nav.Link>
+      <Nav.Link href="/estoques"><Button variant="info" size="lg">Estoque<AiOutlineDropbox></AiOutlineDropbox></Button></Nav.Link>
+      <Nav.Link href="/pedidos"><Button variant="info" size="lg">Pedidos<BsFillBoxSeamFill></BsFillBoxSeamFill></Button></Nav.Link>
+      <Nav.Link href="/produtos"><Button variant="info" size="lg">Produtos<MdProductionQuantityLimits></MdProductionQuantityLimits></Button></Nav.Link>
+      <Nav.Link href="/carrinhos"><Button variant="info" size="lg">Carrinhos<BsFillCartCheckFill></BsFillCartCheckFill></Button></Nav.Link>
+      <Nav.Link href="/funcionarios"><Button variant="info" size="lg">Funcionários<FaUserTie></FaUserTie></Button></Nav.Link>
   
     </Nav>
      </Nav>
         </Offcanvas.Body>
       </Offcanvas>
-      <Navbar bg="dark">
+      <Navbar bg="dark" >
 
         
           <Navbar.Brand href="#home">
             
-        <Button variant="danger" onClick={handleShow}>
+        <Button variant="info" onClick={handleShow}>
         <BsBorderWidth></BsBorderWidth>
       </Button>
           </Navbar.Brand>
       </Navbar>
-      <h1 className='bg-dark py-3 text-white mb-0 text-center'>{props.titulo}</h1>
+      <h1 className='bg-dark py-3 text-white mb-5 text-center'>{props.titulo}</h1>
     <Container>
         {props.children}
       </Container>

@@ -1,14 +1,19 @@
 import Pagina from '@/componentes/Pagina'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Button, Form, Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+import {AiFillSave } from 'react-icons/ai'
+import {ImExit} from 'react-icons/im'
 import clienteValidator from '@/validators/clienteValidator'
 import { mask } from 'remask'
 
-const form = () => {
+const editar = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const {push, query} = useRouter()
   const {register, handleSubmit, setValue,formState:{errors}} = useForm ()
 
@@ -82,7 +87,7 @@ const form = () => {
            
           </Form.Group>
           <Form.Group className="mb-3" controlId="cep">
-            <Form.Label>Cep:</Form.Label>
+            <Form.Label>CEP:</Form.Label>
             <Form.Control isInvalid={errors.cep} mask="99999-999"
             {...register('cep',clienteValidator.cep)}  type="text"
             onChange={handleChange }/>
@@ -99,20 +104,32 @@ const form = () => {
               errors.estado &&
               <small>{errors.estado.message}</small>
             }
-           
           </Form.Group>
           <div className='text-center'>
+          <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1'/>
+       Editar
+      </Button>
 
-          <Button variant="success" onClick={handleSubmit(salvar)}>
-         < AiOutlineCheck className='me-1'/> Salvar
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title><h2>Importante</h2></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja editar?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}><ImExit className='me-1'/>
+            Fechar
           </Button>
-          <Link href={'/clientes'} className='ms-2 btn btn-danger' ><AiOutlineArrowLeft className='me-1'/>Voltar</Link>
+          <Button variant="info" onClick={handleSubmit(salvar)}>
+         < AiFillSave className='me-1'/> Salvar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+          <Link href={'/clientes'} className='ms-2 btn btn-danger' ><ImExit className='me-1'/>Voltar</Link>
           </div>
-
         </Form>
       </Pagina>
     </>
   )
 }
 
-export default form
+export default editar

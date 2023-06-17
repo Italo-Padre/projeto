@@ -4,14 +4,16 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
+import {AiFillSave,AiOutlineShoppingCart} from 'react-icons/ai'
 import carrinhoValidator from '@/validators/carrinhoValidator'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { mask } from 'remask'
+import { ImExit} from 'react-icons/im'
 
 
 const form = () => {
+ 
   const [produtos, setProdutos] = useState([])
 
   const {push} = useRouter()
@@ -42,7 +44,7 @@ const form = () => {
 
   return (
     <>
-      <Pagina titulo='Carrinho'>
+     <Pagina titulo='Carrinho'><AiOutlineShoppingCart className='me-1'/>
       
       <Form>
         <Form.Group className="mb-3">
@@ -84,8 +86,10 @@ const form = () => {
           <small>{errors.preco.message}</small>
         }
         </Form.Group>
-        <Button variant="success" onClick={handleSubmit(salvar)}>< AiOutlineCheck className='me-1'/>Salvar</Button>
-        <Link href={'/carrinhos'} className='ms-2 btn btn-danger'><AiOutlineArrowLeft className='me-1'/>Voltar</Link>
+        <div className='text-center'>
+        <Button variant="info" onClick={handleSubmit(salvar)}><AiFillSave className='me-1'/>Salvar</Button>
+        <Link href={'/carrinhos'} className='ms-2 btn btn-danger'><ImExit className='me-1'/>Voltar</Link>
+        </div>
     </Form>
 
       </Pagina>

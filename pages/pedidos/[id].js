@@ -2,16 +2,21 @@ import Pagina from '@/componentes/Pagina'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import {AiOutlineArrowLeft, AiOutlineCheck } from 'react-icons/ai'
 import pedidoValidator from '@/validators/pedidoValidator'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { mask } from 'remask'
+import {AiFillSave } from 'react-icons/ai'
+import {ImExit} from 'react-icons/im'
 
+const editar = () => {
+  
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
 
-const form = () => {
   const [produtos, setProdutos] = useState([])
   const {push, query} = useRouter()
   const {register, handleSubmit, setValue,formState:{errors}} = useForm ()
@@ -91,8 +96,27 @@ const form = () => {
           <small>{errors.subtotal.message}</small>
         }
         </Form.Group>
-        <Button variant="success" onClick={handleSubmit(salvar)}>< AiOutlineCheck className='me-1'/>Salvar</Button>
-        <Link href={'/pedidos'} className='ms-2 btn btn-danger'><AiOutlineArrowLeft className='me-1'/>Voltar</Link>
+        <div className='text-center'>
+          <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1'/>
+       Editar
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title><h2>Importante</h2></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja editar?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}><ImExit className='me-1'/>
+            Fechar
+          </Button>
+          <Button variant="info" onClick={handleSubmit(salvar)}>
+         < AiFillSave className='me-1'/> Salvar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+     
+        <Link href={'/pedidos'} className='ms-2 btn btn-danger'><ImExit className='me-1'/>Voltar</Link>
+        </div>
     </Form>
 
       </Pagina>
@@ -100,4 +124,4 @@ const form = () => {
   )
 }
 
-export default form
+export default editar
