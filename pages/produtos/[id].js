@@ -36,7 +36,6 @@ const handleShow = () => setShow(true);
   return (
     <>
       <Pagina titulo='Produtos'>
-   
         <Form>
           <Form.Group className="mb-3" controlId="produto">
             <Form.Label>Produto:</Form.Label>
