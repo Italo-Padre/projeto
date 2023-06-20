@@ -38,6 +38,17 @@ const form = () => {
               <small>{errors.nome.message}</small>
             }
           </Form.Group>
+          <Form.Group className="mb-3" controlId="telefone">
+            <Form.Label>Telefone:</Form.Label>
+            <Form.Control isInvalid={errors.nome} mask="(99) 9999-9999"
+              {...register('telefone', funcionarioValidator.telefone)} type="text"
+              onChange={handleChange} />
+            {
+              errors.telefone &&
+              <small>{errors.telefone.message}</small>
+            }
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email:</Form.Label>
             <Form.Control isInvalid={errors.email} {...register('email', funcionarioValidator.email)} type="text" />
@@ -55,7 +66,6 @@ const form = () => {
               errors.cpf &&
               <small>{errors.cpf.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="cep">
             <Form.Label>CEP:</Form.Label>
@@ -66,7 +76,6 @@ const form = () => {
               errors.cep &&
               <small>{errors.cep.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="bairro">
             <Form.Label>Estado:</Form.Label>
@@ -75,9 +84,7 @@ const form = () => {
               errors.estado &&
               <small>{errors.estado.message}</small>
             }
-
           </Form.Group>
-
           <div className='text-center'>
             <Button variant="info" onClick={handleSubmit(salvar)}>
               <AiFillSave className='me-1' /> Salvar

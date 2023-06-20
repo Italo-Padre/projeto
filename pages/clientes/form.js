@@ -37,6 +37,16 @@ const form = () => {
               <small>{errors.nome.message}</small>
             }
           </Form.Group>
+          <Form.Group className="mb-3" controlId="telefone">
+            <Form.Label>Telefone:</Form.Label>
+            <Form.Control isInvalid={errors.telefone} mask="(99) 9999-9999"
+            {...register('telefone', clienteValidator.telefone)} type="text" 
+            onChange={handleChange}/>
+            {
+              errors.telefone &&
+              <small>{errors.telefone.message}</small>
+            }
+          </Form.Group>
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email:</Form.Label>
             <Form.Control isInvalid={errors.email} {...register('email', clienteValidator.email)} type="text" />

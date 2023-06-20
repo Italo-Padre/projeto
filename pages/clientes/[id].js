@@ -43,13 +43,23 @@ const editar = () => {
   return (
     <>
       <Pagina titulo='Clientes'>
-        <Form>
+      <Form>
           <Form.Group className="mb-3" controlId="nome">
             <Form.Label>Nome:</Form.Label>
             <Form.Control isInvalid={errors.nome} {...register('nome', clienteValidator.nome)} type="text" />
             {
               errors.nome &&
               <small>{errors.nome.message}</small>
+            }
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="telefone">
+            <Form.Label>Telefone:</Form.Label>
+            <Form.Control isInvalid={errors.telefone} mask="(99) 9999-9999"
+            {...register('telefone', clienteValidator.telefone)} type="text" 
+            onChange={handleChange}/>
+            {
+              errors.telefone &&
+              <small>{errors.telefone.message}</small>
             }
           </Form.Group>
           <Form.Group className="mb-3" controlId="email">
@@ -85,7 +95,6 @@ const editar = () => {
               errors.cep &&
               <small>{errors.cep.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="bairro">
             <Form.Label>Estado:</Form.Label>
@@ -99,7 +108,6 @@ const editar = () => {
             <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
               Editar
             </Button>
-
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title><h2>Importante</h2></Modal.Title>

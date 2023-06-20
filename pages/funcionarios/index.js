@@ -34,6 +34,7 @@ const index = () => {
             <tr>
               <th>#</th>
               <th>Nome</th>
+              <th>Telefone</th>
               <th>Email</th>
               <th>CPF</th>
               <th>CEP</th>
@@ -49,6 +50,7 @@ const index = () => {
                   <FiDelete onClick={() => excluir(i)} />
                 </td>
                 <td>{item.nome}</td>
+                <td>{item.telefone}</td>
                 <td>{item.email}</td>
                 <td>{item.cpf}</td>
                 <td>{item.cep}</td>

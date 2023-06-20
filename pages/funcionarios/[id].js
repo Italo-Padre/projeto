@@ -45,7 +45,7 @@ const editar = () => {
   return (
     <>
       <Pagina titulo='Funcionário'>
-        <Form>
+      <Form>
           <Form.Group className="mb-3" controlId="nome">
             <Form.Label>Nome:</Form.Label>
             <Form.Control isInvalid={errors.nome} {...register('nome', funcionarioValidator.nome)} type="text" />
@@ -54,6 +54,17 @@ const editar = () => {
               <small>{errors.nome.message}</small>
             }
           </Form.Group>
+          <Form.Group className="mb-3" controlId="telefone">
+            <Form.Label>Telefone:</Form.Label>
+            <Form.Control isInvalid={errors.nome} mask="(99) 9999-9999"
+              {...register('telefone', funcionarioValidator.telefone)} type="text"
+              onChange={handleChange} />
+            {
+              errors.telefone &&
+              <small>{errors.telefone.message}</small>
+            }
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="email">
             <Form.Label>Email:</Form.Label>
             <Form.Control isInvalid={errors.email} {...register('email', funcionarioValidator.email)} type="text" />
@@ -71,7 +82,6 @@ const editar = () => {
               errors.cpf &&
               <small>{errors.cpf.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="cep">
             <Form.Label>CEP:</Form.Label>
@@ -82,7 +92,6 @@ const editar = () => {
               errors.cep &&
               <small>{errors.cep.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="bairro">
             <Form.Label>Estado:</Form.Label>
@@ -91,7 +100,6 @@ const editar = () => {
               errors.estado &&
               <small>{errors.estado.message}</small>
             }
-
           </Form.Group>
           <div className='text-center'>
             <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
