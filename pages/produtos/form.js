@@ -7,17 +7,24 @@ import { useForm } from 'react-hook-form'
 import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
 import produtoValidator from '@/validators/produtoValidator'
+import { mask } from 'remask'
 
 const form = () => {
   const { push } = useRouter()
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit,setValue, formState: { errors } } = useForm()
   function salvar(dados) {
     const produtos = JSON.parse(window.localStorage.getItem('produtos')) || []
     produtos.push(dados)
     window.localStorage.setItem('produtos', JSON.stringify(produtos))
     push('/produtos')
   }
+  function handleChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+    const mascara = event.target.getAttribute('mask')
 
+    setValue(name, mask(value, mascara))
+  }
   return (
     <>
       <Pagina titulo='Produtos'>
@@ -32,7 +39,9 @@ const form = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="preco">
             <Form.Label>Preço:</Form.Label>
-            <Form.Control isInvalid={errors.preco} {...register('preco', produtoValidator.preco)} type="text" />
+            <Form.Control isInvalid={errors.preco} mask="R$ 99,99" 
+            {...register('preco', produtoValidator.preco)} type="text"
+            onChange={handleChange}/>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>

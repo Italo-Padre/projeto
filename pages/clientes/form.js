@@ -80,18 +80,15 @@ const form = () => {
               errors.cep &&
               <small>{errors.cep.message}</small>
             }
-
           </Form.Group>
-          <Form.Group className="mb-3" controlId="bairro">
+          <Form.Group className="mb-3" controlId="estado">
             <Form.Label>Estado:</Form.Label>
             <Form.Control isInvalid={errors.estado} {...register('estado', clienteValidator.estado)} type="text" />
             {
               errors.estado &&
               <small>{errors.estado.message}</small>
             }
-
           </Form.Group>
-
           <div className='text-center'>
             <Button variant="info" onClick={handleSubmit(salvar)}>
               <AiFillSave className='me-1' /> Salvar

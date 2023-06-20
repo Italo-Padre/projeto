@@ -33,7 +33,7 @@ const index = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Sessao</th>
+              <th>Sessão</th>
               <th>Produto</th>
               <th>Quantidade</th>
               <td>Preço</td>

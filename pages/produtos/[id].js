@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import produtoValidator from '@/validators/produtoValidator'
 import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
+import { mask } from 'remask'
 
 const editar = () => {
   const [show, setShow] = useState(false);
@@ -32,11 +33,17 @@ const editar = () => {
     window.localStorage.setItem('produtos', JSON.stringify(produtos))
     push('/produtos')
   }
+  function handleChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+    const mascara = event.target.getAttribute('mask')
 
+    setValue(name, mask(value, mascara))
+  }
   return (
     <>
       <Pagina titulo='Produtos'>
-        <Form>
+      <Form>
           <Form.Group className="mb-3" controlId="produto">
             <Form.Label>Produto:</Form.Label>
             <Form.Control isInvalid={errors.produto} {...register('produto', produtoValidator.produto)} type="text" />
@@ -47,12 +54,13 @@ const editar = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="preco">
             <Form.Label>Preço:</Form.Label>
-            <Form.Control isInvalid={errors.preco} {...register('preco', produtoValidator.preco)} type="text" />
+            <Form.Control isInvalid={errors.preco} mask="R$ 99,99" 
+            {...register('preco', produtoValidator.preco)} type="text"
+            onChange={handleChange}/>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>
             }
-
           </Form.Group>
           <Form.Group className="mb-3" controlId="quantidade">
             <Form.Label>Quantidade:</Form.Label>

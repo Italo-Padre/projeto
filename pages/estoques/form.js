@@ -63,7 +63,7 @@ const form = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$"
+            <Form.Control isInvalid={true} mask="R$ 99,99"
               {...register('preco', estoqueValidator.preco)} id="preco"
               onChange={handleChange} />
             {

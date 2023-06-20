@@ -45,7 +45,7 @@ const editar = () => {
   return (
     <>
       <Pagina titulo='Funcionário'>
-      <Form>
+        <Form>
           <Form.Group className="mb-3" controlId="nome">
             <Form.Label>Nome:</Form.Label>
             <Form.Control isInvalid={errors.nome} {...register('nome', funcionarioValidator.nome)} type="text" />
@@ -93,7 +93,7 @@ const editar = () => {
               <small>{errors.cep.message}</small>
             }
           </Form.Group>
-          <Form.Group className="mb-3" controlId="bairro">
+          <Form.Group className="mb-3" controlId="estado">
             <Form.Label>Estado:</Form.Label>
             <Form.Control isInvalid={errors.estado} {...register('estado', funcionarioValidator.estado)} type="text" />
             {

@@ -8,11 +8,11 @@ import { useForm } from 'react-hook-form'
 import carrinhoValidator from '@/validators/carrinhoValidator'
 import { ImExit } from 'react-icons/im'
 import { AiFillSave } from 'react-icons/ai'
+import { mask } from 'remask'
 
 
 const editar = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -42,10 +42,17 @@ const editar = () => {
     window.localStorage.setItem('carrinhos', JSON.stringify(carrinhos))
     push('/carrinhos')
   }
+  function handleChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+    const mascara = event.target.getAttribute('mask')
+
+    setValue(name, mask(value, mascara))
+  }
   return (
     <>
       <Pagina titulo='Carrinho'>
-        <Form>
+      <Form>
           <Form.Group className="mb-3">
             <Form.Label>Sessão</Form.Label>
             <Form.Control isInvalid={true} {...register('sessao', carrinhoValidator.sessao)} id="sessa" />
@@ -76,7 +83,9 @@ const editar = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} {...register('preco', carrinhoValidator.preco)} id="preco" />
+            <Form.Control isInvalid={true} mask="R$ 99,99"
+              {...register('preco', carrinhoValidator.preco)} id="preco"
+              onChange={handleChange} />
             {
               errors.preco &&
               <small>{errors.preco.message}</small>

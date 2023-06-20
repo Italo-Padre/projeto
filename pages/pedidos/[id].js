@@ -54,60 +54,59 @@ const editar = () => {
   return (
     <>
       <Pagina titulo='Pedidos'>
-
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label >Produto:</Form.Label>
-            <Form.Select isInvalid={true}  {...register('produto', pedidoValidator.produto)} id="produto">
-              {produtos.map(item => (
-                <option>{item.produto}</option>
-              ))}
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label >Produto:</Form.Label>
+              <Form.Select isInvalid={true}  {...register('produto', pedidoValidator.produto)} id="produto">
+                {produtos.map(item => (
+                  <option>{item.produto}</option>
+                ))}
+                {
+                  errors.produto &&
+                  <small>{errors.produto.message}</small>
+                }
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Quantidade:</Form.Label>
+              <Form.Control isInvalid={true} {...register('quantidade', pedidoValidator.quantidade)} id="quantidade" />
               {
-                errors.produto &&
-                <small>{errors.produto.message}</small>
+                errors.quantidade &&
+                <small>{errors.quantidade.message}</small>
               }
-            </Form.Select>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Quantidade:</Form.Label>
-            <Form.Control isInvalid={true} {...register('quantidade', pedidoValidator.quantidade)} id="quantidade" />
-            {
-              errors.quantidade &&
-              <small>{errors.quantidade.message}</small>
-            }
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Valor:</Form.Label>
-            <Form.Control isInvalid={true} mask="R$"
-              {...register('valor', pedidoValidator.valor)} id="valor"
-              onChange={handleChange} />
-            {
-              errors.valor &&
-              <small>{errors.valor.message}</small>
-            }
-          </Form.Group>
-          <div className='text-center'>
-            <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
-              Editar
-            </Button>
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title><h2>Importante</h2></Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Tem certeza que deseja editar?</Modal.Body>
-              <Modal.Footer>
-                <Button variant="danger" onClick={handleClose}><ImExit className='me-1' />
-                  Fechar
-                </Button>
-                <Button variant="info" onClick={handleSubmit(salvar)}>
-                  < AiFillSave className='me-1' /> Salvar
-                </Button>
-              </Modal.Footer>
-            </Modal>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Valor:</Form.Label>
+              <Form.Control isInvalid={true} mask="R$ 99,99"
+                {...register('valor', pedidoValidator.valor)} id="valor"
+                onChange={handleChange} />
+              {
+                errors.valor &&
+                <small>{errors.valor.message}</small>
+              }
+            </Form.Group>
+            <div className='text-center'>
+              <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
+                Editar
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title><h2>Importante</h2></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Tem certeza que deseja editar?</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="danger" onClick={handleClose}><ImExit className='me-1' />
+                    Fechar
+                  </Button>
+                  <Button variant="info" onClick={handleSubmit(salvar)}>
+                    < AiFillSave className='me-1' /> Salvar
+                  </Button>
+                </Modal.Footer>
+              </Modal>
 
-            <Link href={'/pedidos'} className='ms-2 btn btn-danger'><ImExit className='me-1' />Voltar</Link>
-          </div>
-        </Form>
+              <Link href={'/pedidos'} className='ms-2 btn btn-danger'><ImExit className='me-1' />Voltar</Link>
+            </div>
+          </Form>
 
       </Pagina>
     </>

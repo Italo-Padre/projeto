@@ -2,8 +2,8 @@ const carrinhoValidator = {
   sessao: {
     required: 'O campo é obrigatório',
     min: {
-      value: 4,
-      message: 'O mínimo é  1'
+      value: 2,
+      message: 'O mínimo é  2'
     },
     max: {
       value: 50,
@@ -19,7 +19,7 @@ const carrinhoValidator = {
   },
   quantidade: {
     required: 'O campo é obrigatório',
-    minh: {
+    min: {
       value: 1,
       message: 'O mínimo é 1 '
     },

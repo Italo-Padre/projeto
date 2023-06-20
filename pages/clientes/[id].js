@@ -96,7 +96,7 @@ const editar = () => {
               <small>{errors.cep.message}</small>
             }
           </Form.Group>
-          <Form.Group className="mb-3" controlId="bairro">
+          <Form.Group className="mb-3" controlId="estado">
             <Form.Label>Estado:</Form.Label>
             <Form.Control isInvalid={errors.estado} {...register('estado', clienteValidator.estado)} type="text" />
             {

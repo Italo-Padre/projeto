@@ -8,7 +8,7 @@ const estoqueValidator = {
   },
   quantidade: {
     required: 'O campo é obrigatório',
-    minh: {
+    min: {
       value: 1,
       message: 'O mínimo é 1 '
     },
@@ -26,7 +26,7 @@ const estoqueValidator = {
   },
   preco: {
     required: 'O campo é obrigatório',
-    minh: {
+    min: {
       value: 1,
       message: 'O mínimo é 1 '
     },

@@ -46,7 +46,7 @@ const clienteValidator = {
     required: 'O campo é obrigatório',
     minLength: {
       value: 2,
-      message: 'Minimo 2 caracteres'
+      message: 'mínimo 2 caracteres'
     },
   },
 }

@@ -9,12 +9,12 @@ const produtoValidator = {
   preco: {
     required: 'O campo é obrigatório',
     min: {
-      value: 0,
+      value: 1,
       message: 'O mínimo é 1'
     },
     max: {
-      value: 2000,
-      message: ' O máximo é 2000'
+      value: 1000,
+      message: ' O máximo é 1000'
     },
   },
   quantidade: {
@@ -42,6 +42,5 @@ const produtoValidator = {
       message: 'O mínimo 5 caracteres'
     },
   }
-
 }
 export default produtoValidator

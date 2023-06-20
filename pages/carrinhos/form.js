@@ -45,7 +45,6 @@ const form = () => {
   return (
     <>
       <Pagina titulo='Carrinho'><AiOutlineShoppingCart className='me-1' />
-
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Sessão</Form.Label>
@@ -77,8 +76,7 @@ const form = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$"
-
+            <Form.Control isInvalid={true} mask="R$ 99,99"
               {...register('preco', carrinhoValidator.preco)} id="preco"
               onChange={handleChange} />
             {
@@ -91,7 +89,6 @@ const form = () => {
             <Link href={'/carrinhos'} className='ms-2 btn btn-danger'><ImExit className='me-1' />Voltar</Link>
           </div>
         </Form>
-
       </Pagina>
     </>
   )

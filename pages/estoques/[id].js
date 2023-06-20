@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import estoqueValidator from '@/validators/estoqueValidator'
 import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
-
+import { mask } from 'remask'
 
 const editar = () => {
   const [show, setShow] = useState(false);
@@ -50,7 +50,7 @@ const editar = () => {
   return (
     <>
       <Pagina titulo='Estoques'>
-        <Form>
+      <Form>
           <Form.Group className="mb-3">
             <Form.Label >Produto:</Form.Label>
             <Form.Select isInvalid={true}  {...register('produto', estoqueValidator.produto)} id="produto">
@@ -73,7 +73,7 @@ const editar = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$"
+            <Form.Control isInvalid={true} mask="R$ 99,99"
               {...register('preco', estoqueValidator.preco)} id="preco"
               onChange={handleChange} />
             {
