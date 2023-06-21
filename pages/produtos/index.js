@@ -1,7 +1,7 @@
 import Pagina from '@/componentes/Pagina'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap'
+import { Card, Table } from 'react-bootstrap'
 import { FiDelete } from 'react-icons/fi'
 import { BiEdit } from 'react-icons/bi'
 import { GrNewWindow } from 'react-icons/gr'
@@ -51,7 +51,9 @@ const index = () => {
                 <td>{item.preco}</td>
                 <td>{item.quantidade}</td>
                 <td>{item.descricao}</td>
-                <td>{item.foto}</td>
+                <td className='text-center'>
+                  <Card.Img style={{ width: '10rem' }} src={item.foto} ></Card.Img>
+                </td>
               </tr>
             ))}
           </tbody>

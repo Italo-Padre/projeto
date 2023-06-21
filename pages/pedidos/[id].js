@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import { mask } from 'remask'
 import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
+import CurrencyInput from 'react-currency-masked-input'
 
 const editar = () => {
 
@@ -75,16 +76,14 @@ const editar = () => {
                 <small>{errors.quantidade.message}</small>
               }
             </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Valor:</Form.Label>
-              <Form.Control isInvalid={true} mask="R$ 99,99"
-                {...register('valor', pedidoValidator.valor)} id="valor"
-                onChange={handleChange} />
-              {
-                errors.valor &&
-                <small>{errors.valor.message}</small>
-              }
-            </Form.Group>
+            <Form.Group className="mb-3" controlId="valor">
+            <Form.Label>Valor:</Form.Label>
+             <CurrencyInput name='myInput' required/>
+            {
+              errors.valor &&
+              <small>{errors.valor.message}</small>
+            }
+          </Form.Group>
             <div className='text-center'>
               <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
                 Editar

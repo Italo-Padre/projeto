@@ -8,6 +8,7 @@ import produtoValidator from '@/validators/produtoValidator'
 import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
 import { mask } from 'remask'
+import CurrencyInput from 'react-currency-masked-input'
 
 const editar = () => {
   const [show, setShow] = useState(false);
@@ -54,9 +55,7 @@ const editar = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="preco">
             <Form.Label>Preço:</Form.Label>
-            <Form.Control isInvalid={errors.preco} mask="R$ 99,99" 
-            {...register('preco', produtoValidator.preco)} type="text"
-            onChange={handleChange}/>
+             <CurrencyInput name='myInput' required/>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>

@@ -8,6 +8,7 @@ import { AiFillSave } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
 import estoqueValidator from '@/validators/estoqueValidator'
 import { mask } from 'remask'
+import CurrencyInput from 'react-currency-masked-input'
 
 const form = () => {
   const [produtos, setProdutos] = useState([])
@@ -61,11 +62,9 @@ const form = () => {
               <small>{errors.sessao.message}</small>
             }
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$ 99,99"
-              {...register('preco', estoqueValidator.preco)} id="preco"
-              onChange={handleChange} />
+          <Form.Group className="mb-3" controlId="preco">
+            <Form.Label>Preço:</Form.Label>
+             <CurrencyInput name='myInput' required/>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>

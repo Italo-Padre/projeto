@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { mask } from 'remask'
 import { ImExit } from 'react-icons/im'
+import CurrencyInput from 'react-currency-masked-input'
 
 
 const form = () => {
@@ -32,8 +33,11 @@ const form = () => {
     const carrinhos = JSON.parse(window.localStorage.getItem('carrinhos')) || []
     carrinhos.push(dados)
     window.localStorage.setItem('carrinhos', JSON.stringify(carrinhos))
-    push('/carrinhos')
+   // push('/carrinhos')
   }
+
+  console.log(salvar);
+
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
@@ -74,11 +78,9 @@ const form = () => {
               <small>{errors.quantidade.message}</small>
             }
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$ 99,99"
-              {...register('preco', carrinhoValidator.preco)} id="preco"
-              onChange={handleChange} />
+             <CurrencyInput   {...register('preco')} id="preco" name='myInput' required/>
+          <Form.Group className="mb-3" controlId="preco">
+            <Form.Label>Preço:</Form.Label>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>

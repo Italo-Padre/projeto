@@ -9,6 +9,7 @@ import carrinhoValidator from '@/validators/carrinhoValidator'
 import { ImExit } from 'react-icons/im'
 import { AiFillSave } from 'react-icons/ai'
 import { mask } from 'remask'
+import CurrencyInput from 'react-currency-masked-input'
 
 
 const editar = () => {
@@ -81,15 +82,13 @@ const editar = () => {
               <small>{errors.quantidade.message}</small>
             }
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Preço</Form.Label>
-            <Form.Control isInvalid={true} mask="R$ 99,99"
-              {...register('preco', carrinhoValidator.preco)} id="preco"
-              onChange={handleChange} />
+          <Form.Group className="mb-3" controlId="preco">
+            <Form.Label>Preço:</Form.Label>
             {
               errors.preco &&
               <small>{errors.preco.message}</small>
             }
+            <CurrencyInput isInvalid={true} {...register('preco', carrinhoValidator.preco)} id="preco" name='myInput' required/>
           </Form.Group>
           <div className='text-center'>
             <Button variant="info" onClick={handleShow}>< AiFillSave className='me-1' />
