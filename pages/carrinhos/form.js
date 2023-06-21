@@ -33,7 +33,7 @@ const form = () => {
     const carrinhos = JSON.parse(window.localStorage.getItem('carrinhos')) || []
     carrinhos.push(dados)
     window.localStorage.setItem('carrinhos', JSON.stringify(carrinhos))
-   // push('/carrinhos')
+   push('/carrinhos')
   }
 
   console.log(salvar);
